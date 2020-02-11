@@ -218,7 +218,7 @@ function Get-ServiceAccounts {
     # Export to CSV if enabled and ?{$_} to support older versions of PowerShell
     if ($CSVPath -and $Results) { 
       Write-Host "[$(Get-Date)] Exporting results to $CSVFile"
-      $Results | Export-Csv -Path $CSVFile -NoTypeInformation
+      $Results | Where-Object { $_ } | Export-Csv -Path $CSVFile -NoTypeInformation
     } 
     elseif ($CSVPath -and -not $Results) { 
       Write-Host "[$(Get-Date)] Either all results were filtered out or errors prevented collection. Check or use the Transcript to confirm."
