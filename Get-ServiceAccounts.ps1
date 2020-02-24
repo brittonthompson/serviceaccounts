@@ -59,7 +59,7 @@ function Get-ServiceAccounts {
     $LogPath = "$ScriptPath\Logs"
     $LogFile = "$LogPath\$ScriptName`_$DateFormat.txt"
     if ($Transcript -and $LogFile) { Start-Transcript -Path $LogFile }
-    if (-not (Test-Path $LogPath)) { New-Item -Path $LogPath -ItemType Directory -Force }
+    if (-not (Test-Path $LogPath)) { New-Item -Path $LogPath -ItemType Directory -Force | Out-Null }
     if (-not $CSVPath) { $CSVPath = $LogPath }
     $CSVFile = "$CSVPath\$ScriptName`_$DateFormat.csv"
     $ExcludeTasks = @("Adobe Acrobat Update Task", "G2MUpdateTask", "G2MUploadTask", "Optimize Start Menu Cache", "User_Feed_Synchronization", "GoogleUpdate", "TaskName", "OneDrive")
